@@ -1,0 +1,18 @@
+{% include 'admin_header.html' %}
+	<center><h1 style="margin-top: 100px">Uploaded File</h1>
+	<table class="table">
+		<tr>
+			<th>Sl.No</th>
+			<th>File</th>
+			<th>Date</th>
+		</tr>
+		{%for i in data['uploaded']%}
+			<tr>
+				<td>{{loop.index}} </td>
+				<td><img src="/{{i['File']}}" width="200" height="150"></td>
+				<td>{{i['Date']}} </td>
+			</tr>
+		{%endfor%}
+	</table>
+</center>
+{% include 'footer.html' %}

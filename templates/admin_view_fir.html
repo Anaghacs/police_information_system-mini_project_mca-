@@ -1,0 +1,21 @@
+{% include 'admin_header.html' %}
+	<center><h1 style="margin-top: 100px">FIR Details</h1>
+	<table class="table">
+		<tr>
+			<th>Sl.No</th>
+			<th>Crime Id</th>
+			<th>FIR_Details</th>
+			<th>Uploaded_File</th>
+		</tr>
+		{%for i in data['fir']%}
+			<tr>
+				<td>{{loop.index}} </td>
+				<td>{{i['Crime_id']}} </td>
+				<td>{{i['Firdetails']}} </td>
+				<td><img src="/{{i['Uploadedfile']}}" width="200" height="150"></td>
+				<td><a href="admin_view_charge_sheet?cid={{i['Crime_id']}}"class="btn btn-primary">Chargesheet</a></td>
+			</tr>
+
+		{%endfor%}
+	</table></center>
+{% include 'footer.html' %}

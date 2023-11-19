@@ -1,0 +1,40 @@
+{% include 'station_header.html' %}
+<center>
+	<br><br><br><br>
+	<h1 style="margin-top: 100px">View Complaints</h1>
+	<table class="table">
+		<tr>
+			<th>Sl.No</th>
+			<th>User Name</th>
+			<th>Station Name</th>
+			<th>Complaint</th>
+			<th>Date</th>
+			<th>Status</th>
+		</tr>
+		{%for i in data['complaint']%}
+			<tr>
+				<td>{{loop.index}} </td>
+				<td>{{i['F_name']}}{{i['L_name']}} </td>
+				<td>{{i['Station']}} </td>
+				<td>{{i['Complaint']}} </td>
+				<td>{{i['Date']}} </td>
+				<td>{{i['Status']}} </td>
+				
+				{% if i ['Status']=='pending' %}
+				<td>
+				<a href="?action=approve&cid={{i['Complaint_id']}}">approve</a>
+				<a href="?action=reject&cid={{i['Complaint_id']}}">reject</a>
+				</td>
+				{% endif %}
+
+				<td><a href="station_view_evidence?cid={{i['Complaint_id']}}"class="btn btn-info"> Evidence </a>
+					<a href="station_view_uploaded_file?cid={{i['Complaint_id']}}"class="btn btn-success">Upload file</a>
+					<a href="station_send_msg_to_user?cid={{i['Complaint_id']}}&stid={{i['Login_id']}}"class="btn btn-primary">Send Msg user</a></td>
+		</tr>
+				</td>
+			</tr>
+
+		{%endfor%}
+	</table>
+</center>
+{% include 'station_footer.html' %}

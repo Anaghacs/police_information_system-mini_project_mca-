@@ -1,0 +1,29 @@
+{% include 'user_header.html' %}
+
+
+	<center>
+		
+	<h1 style="margin-top: 100px" >Crime Details</h1>
+	<table class="table">
+		<tr>
+			<th>Sl.No</th>
+			<th>Station_Name</th>
+			<th>Crime Type</th>
+			<th>Details</th>
+			<th>Date</th>
+		</tr>
+		{% for i in data['cr'] %}
+		<tr>
+			<td>{{loop.index}} </td>
+			<td>{{i['Station_id']}} </td>
+			<td>{{i['Crime']}} </td>
+			<td>{{i['Details']}} </td>
+			<td>{{i['Date']}} </td>
+			<td><a href="user_view_criminals?cid={{i['Crime_id']}}" class="btn btn-success">Criminals</a>
+				<a href="user_view_judgement?cid={{i['Crime_id']}}"class="btn btn-dark">Judgement</a>
+				<a href="user_view_law_and_order?cid={{i['Crime_id']}}"class="btn btn-info">Law and Order</a></td>
+		</tr>
+		{% endfor %}
+	</table></center>
+
+{% include 'footer.html'%}

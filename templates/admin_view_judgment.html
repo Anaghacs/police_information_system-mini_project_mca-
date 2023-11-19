@@ -1,0 +1,22 @@
+{% include 'admin_header.html' %}
+	<center><h1 style="margin-top: 100px">Judgement Details</h1>
+	<form>
+		<table class="table">
+			<tr>
+			<th>Sl.No</th>
+			<th>Crime Id</th>
+			<th>Judgement</th>
+			<th>Details</th>
+		</tr>
+		{%for i in data['jud']%}
+			<tr>
+				<td>{{loop.index}} </td>
+				<td>{{i['Crime_id']}}</td>
+				<td>{{i['Judgement']}} </td>
+				<td>{{i['Details']}} </td>
+			</tr>
+
+		{%endfor%}
+		</table>
+	</form></center>
+{%include 'footer.html' %}

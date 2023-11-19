@@ -1,0 +1,52 @@
+{% include 'publicheader.html'%}
+<center>
+	<section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="carousel-container">
+	<form method="post">
+		<table>
+			<h1 style="color: white">Registration</h1>
+			<tr>
+				<th style="color: white">First name</th>
+				<td><input type="text" required pattern="[A-Za-z]+$" class="form-control" name="f_name"></td>
+			</tr>
+			<tr>
+				<th style="color: white">Last name</th>
+				<td><input type="text" required pattern="[A-Za-z]+$" class="form-control" name="l_name"></td>
+			</tr>
+			<tr>
+				<th style="color: white">Place</th>
+				<td><input type="text" required pattern="[A-Za-z]+$" class="form-control" name="place"></td>
+			</tr>
+			<tr>
+				<th style="color: white">Phone</th>
+				<td><input type="text" required pattern="[0-9]{10}" class="form-control" name="phone"></td>
+			</tr>
+			<tr>
+				<th style="color: white">Email</th>
+				<td><input type="email" required class="form-control"  name="email"></td>
+			</tr>
+			<tr>
+    			<th style="color: white">Gender</th>
+    			<td><input style="color: white" type="radio" required name="g" value="male">male<input style="color: white" type="radio" name="g" value="female">female</td>
+    		</tr>
+    		<tr>
+    			<th style="color: white">User name</th>
+    			<td><input type="text"  required class="form-control" name="user"></td>
+    		</tr>
+    		<tr>
+    			<th style="color: white">Pass word</th>
+    			<td><input type="text" required class="form-control" name="password"></td>
+    		</tr>
+    		<tr>
+	 			<td align="center" colspan="2"><input type="submit" name="user" value="LOGIN" class="btn btn-info"></td>
+	 		</tr>
+	 	</table>
+	</form>
+</div></div></div></section>
+</center>
+
+{% include 'footer.html' %}

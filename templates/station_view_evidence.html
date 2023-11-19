@@ -1,0 +1,25 @@
+{% include 'station_header.html' %}
+<center>
+	<h1 style="margin-top: 100px">Evidence Details</h1>
+	<table class="table">
+		<tr>
+			<th>Sl.No</th>
+			<th>Evidence</th>
+			<th>Details</th>
+			<th>Date</th>
+		</tr>
+		{%for i in data['evidence']%}
+			<tr>
+				<td>{{loop.index}} </td>
+				<td>{{i['Evidence']}} </td>
+				<td><img src="/{{i['Details']}}" width="200" height="150"></td>
+				<td>{{i['Date']}} </td>
+			</tr>
+
+
+		{%endfor%}
+		
+	</table>
+</center>
+{% include 'footer.html' %}
+

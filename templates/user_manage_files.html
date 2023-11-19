@@ -1,0 +1,85 @@
+{% include 'user_header.html' %}
+<center>
+	<section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="carousel-container">
+	<form method="post" enctype="multipart/form-data">
+	{% if data['upp'] %}
+	<table>
+	<h1 style="color: white">Upload File</h1>
+	<tr>
+			<th style="color: white">Uploaded File</th>
+			<td><input type="file" name="file1" value="{{data['upp'][0]['File']}}"></td>
+	</tr>
+	<tr>
+	 		<td align="center" colspan="2"><input type="submit" name="up" value="Insert" class="btn btn-success"></td>
+	 </tr>
+	 </table>
+	</table>
+	{% else %}
+	<table>
+		<h1 style="color: white">Upload File</h1><br><br>
+		<tr>
+			<th style="color: white">Uploaded File</th>
+			<td><input type="file" name="file1"></td>
+		</tr>
+		<tr>
+	 		<td align="center" colspan="2"><input type="submit" name="manage" value="Insert" class="btn btn-info"></td>
+	 	</tr>
+
+	</table>
+	{% endif %}
+	<a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+</use>
+
+  </section>
+	<table class="table">
+		<h1>Uploaded File Detail</h1>
+		<tr>
+			<th>Sl.No</th>
+			
+			<th>Details</th>
+			<th>Date</th>
+			<th>Status</th>
+		</tr>
+		{%for i in data['uploadfile']%}
+			<tr>
+				<td>{{loop.index}} </td>
+				
+				<td><a href="{{i['File']}}"><img src="{{i['File']}}" height="100" width="100"></a> </td>
+				<td>{{i['Date']}} </td>
+				<td><a href="action=accept&cid={{i['Complaint_id']}}">accept</a></td>
+				<td><a href="action=reject&cid={{i['Complaint_id']}}">reject</a></td>
+				<td><a href="?action=delete&cid={{i['Uploadfile_id']}}" class="btn btn-danger">Delete</a></td>
+				<td><a href="?action=update&cid={{i['Uploadfile_id']}}" class="btn btn-success">Update</a></td>
+			</tr>
+
+		{%endfor%}
+	</table></center></form>
+{% include 'footer.html' %}

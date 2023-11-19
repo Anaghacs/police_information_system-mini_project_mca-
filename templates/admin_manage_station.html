@@ -1,0 +1,123 @@
+{% include 'admin_header.html' %}
+<center>
+	<section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="carousel-container">
+        <form method='post'>
+         {% if  data['row'] %}
+			<table style="color: white">
+			<h1 style="margin-top: 100px;color: white">Update Station Details</h1>
+				
+				<tr>
+					<th style="margin-top: 100px;color: white">Station</th>
+					<td><input type="text" name="Station" value="{{data['row'][0]['Station']}}"></td>
+				</tr>
+				<tr>
+					<th style="margin-top: 100px;color: white">Place</th>
+					<td><input type="text" name="Place" value="{{data['row'][0]['Place']}}"></td>
+				</tr>
+				<tr>
+					<th style="margin-top: 100px;color: white">Phone No</th>
+					<td><input type="text" name="Phone" value="{{data['row'][0]['Phone']}}"></td>
+				</tr>
+				<tr>
+					<th style="margin-top: 100px;color: white">Email id</th>
+					<td><input type="text" name="Email" value="{{data['row'][0]['Email']}}"></td>
+				</tr>
+				<tr>
+	 				<td align="center" colspan="2"><input type="submit" name="up" value="Manage" class="btn btn-success"></td>
+	 			</tr>
+			</table>
+			{% else %}
+		<TABLE>
+				<h1 style="margin-top: 100px;color: white">Station</h1>
+			<tr>
+				<th style="margin-top: 100px;color: white">Station</th>
+				<td><input type="text" required pattern="[A-Za-z]+$" class="form-control" name="station"></td>
+			</tr>
+			<tr>
+				<th style="margin-top: 100px;color: white">Place</th>
+				<td><input type="text" required pattern="[A-Za-z]+$" class="form-control" name="place"></td>
+			</tr>
+			<tr>
+				<th style="margin-top: 100px;color: white">Phone Number</th>
+				<td><input type="text" required pattern="[0-9]{10}" class="form-control" name="phone"></td>
+			</tr>
+			<tr>
+				<th style="margin-top: 100px;color: white">Email id</th>
+				<td><input type="email" required class="form-control" name="email"></td>
+			</tr>
+			<tr>
+    			<th style="margin-top: 100px;color: white">User name</th>
+    			<td><input type="text" required class="form-control" name="user"></td>
+    		</tr>
+    		<tr>
+    			<th style="margin-top: 100px;color: white">Password</th>
+    			<td><input type="text" required class="form-control" name="password"></td>
+    		</tr>
+    		<tr>
+	 			<td align="center" colspan="2"><input style="margin-left: 100px;margin-top: 10px" type="submit" class="btn btn-primary" name="station" value="SUBMIT"></td>
+	 		</tr>
+	</TABLE>
+</form>
+{% endif %}
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+     
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section>
+	
+
+	<h1>View stations</h1>
+	<table class="table">
+		<tr>
+			<th>Sl.No</th>
+			<th>Station name</th>
+			<th>Place</th>
+			<th>Phone</th>
+			<th>Email</th>
+		</tr>
+		{%for i in data['station']%}
+			<tr>
+				<td>{{loop.index}} </td>
+				<td>{{i['Station']}} </td>
+				<td>{{i['Place']}} </td>
+				<td>{{i['Phone']}} </td>
+				<td>{{i['Email']}} </td>
+				<td><a href="?action=delete&cid={{i['Station_id']}}" class="btn btn-danger">Delete</a></td>
+				<td><a href="?action=update&cid={{i['Station_id']}}" class="btn btn-success">Update</a></td>
+			</tr>
+
+		{%endfor%}
+	</table></center>
+{%include 'footer.html' %}

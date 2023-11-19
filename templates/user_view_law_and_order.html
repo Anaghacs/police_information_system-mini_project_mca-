@@ -1,0 +1,22 @@
+{% include 'user_header.html'%}
+	<center><h1 style="margin-top: 100px; color: black">Law And Order</h1>
+	<form>
+		<table class="table">
+			<tr>
+			<th>Sl.No</th>
+			<th>Law and Order</th>
+			<th>Details</th>
+			<th>Date</th>
+		</tr>
+		{%for i in data['lawandorder']%}
+			<tr>
+				<td>{{loop.index}} </td>
+				<td>{{i['Lawandorders']}} </td>
+				<td>{{i['Details']}}</td>
+				<td>{{i['Date']}} </td>
+			</tr>
+
+		{%endfor%}
+		</table>
+	</form></center>
+{% include 'footer.html' %}
